@@ -16,61 +16,56 @@
                 ></v-progress-circular>
             </template>
         </v-text-field>        
-        <v-text-field 
-            v-model="title"
-            label="영화 검색"
-            placeholder="영화 제목을 입력해주세요."
-            variant="outlined"
-            clearable>
-            <template v-slot:prepend-inner>
-                <v-icon icon="fa:fas fa-search"></v-icon>
-            </template>        
-        </v-text-field>
-        <v-text-field 
-            v-model="title"
-            label="영화 검색"
-            placeholder="영화 제목을 입력해주세요."
-            variant="outlined"
-            clearable>
-            <template v-slot:prepend-inner>
-                <v-icon>search</v-icon>
-            </template>        
-        </v-text-field>
-        검색바
     </div>
     <button @click="searchMovies">검색 버튼</button>
 </template>
 
 
 <script>
-import axios from 'axios'
-// import { mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
+    name: 'SearchBar',
+
     data() {
         return {
             title: '',
             loading: false,
         }
     },
+    // computed: {
+    //     title: {
+    //         get () {
+    //             return this.$store.state.movie.title
+    //         },
+    //         set (newTitle) {
+    //             this.$store.commit('movie/updateState', {
+    //                 title: newTitle
+    //             })
+    //         }
+    //     },
+    //     loading () {
+    //         return this.$store.state.movie.loading
+    //     }
+    // },
     methods: {
-        async searchMovies () {
-            this.loading = true
+        // async searchMovies () {
+        //     this.loading = true
             
-            const res = await axios.get(`https://omdbapi.com/?apikey=32e321fd&page=1&s=${this.title}`)
-            console.log(res)
+        //     const res = await axios.get(`https://omdbapi.com/?apikey=32e321fd&page=1&s=${this.title}`)
+        //     console.log(res)
 
-            this.loading = false
-            console.log("검색")
-        }
+        //     this.loading = false
+        //     console.log("검색")
+        // }
 
         // searchMovies() {
         //     this.$store.dispatch('movie/searchMovies')
         // }
 
-        // ...mapActions('movie, [
-        //     'searchMovies'
-        // ])
+        ...mapActions('movie', [
+          'searchMovies'
+        ])
   
     }
 }
