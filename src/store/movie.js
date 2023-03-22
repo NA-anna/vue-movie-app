@@ -1,14 +1,17 @@
 import axios from 'axios'
 
 export default ({
+    // 현재 파일(movie.js)을 Store 모듈로 활용하려면 다음 옵션이 필요합니다.
     namespaced: true,
+
     state: () =>  ({
         title: '',
         loading: false,
         movies: []
     }),
-    getters: {
-    },
+
+    getters: {},
+
     mutations: {
         updateState (state, payload) {
             Object.keys(payload).forEach(key => {
@@ -16,6 +19,7 @@ export default ({
             })
         }
     },
+
     actions: {
         async searchMovies ({ commit, state }) {
         
@@ -32,6 +36,7 @@ export default ({
             })
         }
     },
+
     modules: {
     }
   })
