@@ -43,7 +43,7 @@ export default {
             return this.$store.state.movie.loading
         }
     },
-    
+
     methods: {
         // async searchMovies () {
         //     this.loading = true
