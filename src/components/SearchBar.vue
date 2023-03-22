@@ -43,7 +43,7 @@
 
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 // import { mapActions } from 'vuex';
 
 export default {
@@ -54,19 +54,19 @@ export default {
         }
     },
     methods: {
-        // async searchMovies () {
-        //     this.loading = true
+        async searchMovies () {
+            this.loading = true
             
-        //     const res = await axios.get(`https://omdbapi.com/?apikey=32e321fd&page=1&s=${this.title}`)
-        //     console.log(res)
+            const res = await axios.get(`https://omdbapi.com/?apikey=32e321fd&page=1&s=${this.title}`)
+            console.log(res)
 
-        //     this.loading = false
-        //     console.log("검색")
-        // }
-
-        searchMovies() {
-            this.$store.dispatch('movie/searchMovies')
+            this.loading = false
+            console.log("검색")
         }
+
+        // searchMovies() {
+        //     this.$store.dispatch('movie/searchMovies')
+        // }
 
         // ...mapActions('movie, [
         //     'searchMovies'
