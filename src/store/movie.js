@@ -18,17 +18,16 @@ export default ({
     },
     actions: {
         async searchMovies ({ commit, state }) {
-            // state.loading = true
+        
             commit('updateState', {
                 loading: true
             })
             
             const res = await axios.get(`https://omdbapi.com/?apikey=32e321fd&page=1&s=${state.title}`)
             console.log(res)
-
-            state.movies = res.data.Search
-            // state.loading = false
+            
             commit('updateState', {
+                movies: res.data.Search,
                 loading: false
             })
         }
