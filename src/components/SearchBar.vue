@@ -23,31 +23,27 @@
 
 <script>
 import { mapActions } from 'vuex';
+// import axios from 'axios'
 
 export default {
     name: 'SearchBar',
 
-    data() {
-        return {
-            title: '',
-            loading: false,
+    computed: {
+        title: {
+            get () {
+                return this.$store.state.movie.title
+            },
+            set (newTitle) {
+                this.$store.commit('movie/updateState', {
+                    title: newTitle
+                })
+            }
+        },
+        loading () {
+            return this.$store.state.movie.loading
         }
     },
-    // computed: {
-    //     title: {
-    //         get () {
-    //             return this.$store.state.movie.title
-    //         },
-    //         set (newTitle) {
-    //             this.$store.commit('movie/updateState', {
-    //                 title: newTitle
-    //             })
-    //         }
-    //     },
-    //     loading () {
-    //         return this.$store.state.movie.loading
-    //     }
-    // },
+    
     methods: {
         // async searchMovies () {
         //     this.loading = true

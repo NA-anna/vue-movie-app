@@ -1,6 +1,11 @@
 <template>
     <div>
-MovieList...
+        <ul>
+            <li v-for="movie in movies"
+            :key="movie.imdbID">
+                {{ movie }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -8,6 +13,10 @@ MovieList...
 export default {
     name: 'MovieList',
 
-    computed: {},
+    computed: {
+        movies () {
+            return this.$store.state.movie.movies
+        }
+    }
 }
 </script>
