@@ -33,12 +33,14 @@ export default {
     // Actions의 주요 목적은 Mutations를 실행시키는 역할
     // dispatch 로 실행
     actions: {
-        function fetchMovies ({ state, commit }, pageNum) {
+        async fetchMovies ({ state, commit }, pageNum) {
             const promise = new Promise(resolve => {
               const res = axios.get(`https://omdbapi.com/?apikey=${API_KEY}&s=${state.title}&page=${pageNum}`)
               resolve(res)
             })
-            return promise.then(res => res.data)
+            const res_1 = await promise
+            commit('pushIntoMovies', res_1.data.Search )
+            return res_1.data
           },
         // fetchMovies ({ state, commit }, pageNum) {
         //     return new Promise( async resolve => {
